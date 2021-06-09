@@ -2,6 +2,8 @@ import csv
 from flask import Flask, jsonify
 
 app = Flask(__name__)
+
+
 all_data = {}
 with open('schedule.csv', 'r') as csv_file:
     csv_reader = csv.DictReader(csv_file)
@@ -9,7 +11,6 @@ with open('schedule.csv', 'r') as csv_file:
     for line in csv_reader:
         data[line['Id']] = line
 
-print(data)
 
 @app.route('/flights', methods=['GET'])
 def get_flights():
